@@ -39,7 +39,7 @@ public class Node {
             args.processor(processor);
             TServer server = new TThreadPoolServer(args);
 
-            System.out.printf("Starting the DHTNode(No. %d)...\n", nodeIndex);
+            System.out.printf("Starting the DFS Node(No. %d)...\n", nodeIndex);
             server.serve();
         } catch (Exception e) {
             e.printStackTrace();

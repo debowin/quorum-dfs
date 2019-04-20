@@ -24,6 +24,6 @@ n: classes
 	$(JVM) $(JFLAGS_RUN) $(JFLAGS) $(CLASSPATH) Node $(NUM)
 
 cli: classes
-	$(JVM) $(JFLAGS_RUN) $(JFLAGS) $(CLASSPATH) Client $(FILE)
+	$(JVM) $(JFLAGS_RUN) $(JFLAGS) $(CLASSPATH) Client
 
 .PHONY: n cli

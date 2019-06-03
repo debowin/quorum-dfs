@@ -5,11 +5,10 @@
 
 ## BRIEF
 
-This is a simple implementation of a Distributed File System using [Gifford Quorum Voting](https://en.wikipedia.org/wiki/Quorum_(distributed_computing)
+This is a simple implementation of a Distributed File System using [Gifford Quorum Voting](https://en.wikipedia.org/wiki/Quorum_(distributed_computing))
 as a way to achieve replica consensus written using Thrift RPC and Java. This is mostly a P2P system so each File Server(Node) involved has the same functionality.
-This system supports multiple clients and for some simplicity, one of the nodes additionally serves as a centralized Coordinator to build Qourums for each operation
-and for sequentially ordering concurrent Writes to the same file.
-However, writes to different files as well as all reads happen concurrently.
+This system supports multiple clients and for some simplicity, one of the nodes additionally serves as a centralized Coordinator to build Quorums for each operation and for sequentially ordering concurrent Writes to the same file.
+However, writes to different files as well as all reads and list operations happen concurrently.
 
 The Client is able to issue commands(read file, write file and list files) from a CLI and additionally,
 use a "simulate read/write" feature wherein it fires said type of requests with random delays and payloads.
@@ -34,7 +33,7 @@ system, including:
 There is a makefile provided that can be used to easily build and run the project.
 *YOU NEED JAVA 1.8+ AND THRIFT 0.9+ TO RUN THIS SYSTEM*
 * Check to make sure the address, ports and other options are as desired in the
-[config file](gen-java/simpledfs.cfg) file.
+[config file](gen-java/simpledfs.cfg).
 * Run “make clean && make” to rebuild the source.
 * Run “make cli” to run the client.
 * Run “make n NUM=<num>” to run the file server nodes.

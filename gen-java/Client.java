@@ -35,6 +35,12 @@ public class Client {
             String[] ports = prop.getProperty("node.ports").split("\\s*,\\s*");
 
             int nodesCount = Integer.parseInt(prop.getProperty("nodes.count"));
+            int readQuorum = Integer.parseInt(prop.getProperty("quorum.read"));
+            int writeQuorum = Integer.parseInt(prop.getProperty("quorum.write"));
+
+            // check quorum conditions
+            assert readQuorum + writeQuorum > nodesCount;
+            assert writeQuorum > nodesCount/2;
 
             assert addresses.length == nodesCount;
             assert ports.length == nodesCount;
@@ -49,7 +55,12 @@ public class Client {
             Option option = Option.ls;
             while (option != Option.exit) {
                 // UI Menu Loop
-                option = Option.valueOf(console.readLine("CHOOSE> read, write, ls, simRead, simWrite, exit\n> "));
+                try {
+                    option = Option.valueOf(console.readLine("CHOOSE> read, write, ls, simRead, simWrite, exit\n> "));
+                } catch (IllegalArgumentException e){
+                    console.printf("Bad Option, try again!\n");
+                    continue;
+                }
                 switch (option) {
                     case read:
                         String fileName = console.readLine("Enter File Name: ");
